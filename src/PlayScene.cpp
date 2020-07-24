@@ -160,9 +160,38 @@ void PlayScene::handleEvents()
 
 			m_bDebugKeys[K_KEY] = true;
 
-
 		}
 	}
+
+	//P KEY Section
+
+
+	//H KEY Section
+	if (!m_bDebugKeys[P_KEY])
+	{
+		if (EventManager::Instance().isKeyDown(SDL_SCANCODE_P))
+		{
+			//toggles Patrol Mode
+			m_bPatrolMode = !m_bPatrolMode;
+
+			m_bDebugKeys[P_KEY] = true;
+
+			if (m_bPatrolMode)
+			{
+				std::cout << "DEBUG: Patrol Mode On" << std::endl;
+			}
+			else
+			{
+				std::cout << "DEBUG: Patrol Mode Off" << std::endl;
+			}
+		}
+	}
+
+	if (EventManager::Instance().isKeyUp(SDL_SCANCODE_P))
+	{
+		m_bDebugKeys[P_KEY] = false;
+	}
+
 
 	if (EventManager::Instance().isKeyUp(SDL_SCANCODE_K))
 	{
@@ -188,6 +217,7 @@ void PlayScene::handleEvents()
 void PlayScene::start()
 {
 	m_bDebugMode = false;
+	m_bPatrolMode = false;
 
 	// Plane Sprite
 	m_pPlaneSprite = new Plane();

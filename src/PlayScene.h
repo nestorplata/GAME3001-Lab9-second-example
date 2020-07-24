@@ -33,6 +33,7 @@ private:
 	bool m_bDebugMode;
 
 	bool m_bDebugKeys[NUM_OF_DEBUG_KEYS];
+	bool m_bPatrolMode;
 
 };
 
